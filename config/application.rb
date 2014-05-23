@@ -21,6 +21,6 @@ module TvGuideListing
     # config.i18n.default_locale = :de  
 	   
 	config.action_controller.default_url_options = { :host => 'localhost' }
-
+	config.assets.enabled = false
   end
 end
