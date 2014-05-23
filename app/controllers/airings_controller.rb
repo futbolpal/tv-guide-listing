@@ -18,7 +18,7 @@ class AiringsController < ActionController::Base
 		}
 
 		feed = Atom::Feed.new do |f|
-		  f.title = "Whats on"
+		  f.title = "Whats on #{@airings.first.SourceDisplayName}"
 		  f.authors << Atom::Person.new(:name => 'Rovi')
 		  f.updated = Time.now
 		  @airings.each do |airing|
