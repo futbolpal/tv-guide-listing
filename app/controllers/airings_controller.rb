@@ -16,7 +16,6 @@ class AiringsController < ActionController::Base
 		@airings = j["LinearScheduleResult"]["Schedule"]["Airings"].map { |a| 
 			o = Airing.new(a.symbolize_keys) 
 		}
-
 		feed = Atom::Feed.new do |f|
 		  f.title = "Whats on #{@airings.first.SourceDisplayName}"
 		  f.authors << Atom::Person.new(:name => 'Rovi')
@@ -26,7 +25,7 @@ class AiringsController < ActionController::Base
 				  e.title = airing.Title
 				  e.updated = airing.AiringTime 
 				  e.summary = airing.EpisodeTitle
-				  e.content = Atom::Content::Html.new(airing.Copy)
+				  e.content = Atom::Content::Html.new(airing.Copy) if airing.Copy
 			  end
 		  end
 		end  
